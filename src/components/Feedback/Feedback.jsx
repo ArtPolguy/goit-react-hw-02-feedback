@@ -11,28 +11,60 @@ class Feedback extends Component {
     bad: 0,
   };
 
-  handleBtnClick = () => {
+  handleBtnClick = e => {
+    const nameValue = e.currentTarget.name;
     this.setState(initialState => ({
-      good: initialState.good + 1,
+      [nameValue]: initialState[nameValue] + 1,
     }));
   };
 
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    const totalFeeds = good + neutral + bad;
+    return totalFeeds;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
+    const posPercentFeeds = (good * 100) / total;
+    return posPercentFeeds;
+  };
+
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div className={css.container}>
         <h1 className={css.title}>Please leave feedback</h1>
         <input
           type="button"
           value="Good"
+          name="good"
           className={css.button}
           onClick={this.handleBtnClick}
         />
-        <input type="button" value="Neutral" className={css.button} />
-        <input type="button" value="Bad" className={css.button} />
+        <input
+          type="button"
+          value="Neutral"
+          name="neutral"
+          className={css.button}
+          onClick={this.handleBtnClick}
+        />
+        <input
+          type="button"
+          value="Bad"
+          name="bad"
+          className={css.button}
+          onClick={this.handleBtnClick}
+        />
         <h2 className={css.titleStatistic}>Statistics</h2>
-        <p className={css.statsValue}>Good: {this.state.good}</p>
-        <p className={css.statsValue}>Neutral: {this.state.neutral}</p>
-        <p className={css.statsValue}>Bad: {this.state.bad}</p>
+        <p className={css.statsValue}>Good: {good}</p>
+        <p className={css.statsValue}>Neutral: {neutral}</p>
+        <p className={css.statsValue}>Bad: {bad}</p>
+        <p className={css.statsValue}>Total:{this.countTotalFeedback()}</p>
+        <p className={css.statsValue}>
+          Total:{this.countPositiveFeedbackPercentage()}
+        </p>
       </div>
     );
   }

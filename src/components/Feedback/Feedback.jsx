@@ -10,9 +10,9 @@ class Feedback extends Component {
   };
 
   state = {
-    good: this.props.initialValue,
-    neutral: this.props.initialValue,
-    bad: this.props.initialValue,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   handleBtnClick = e => {
@@ -42,7 +42,7 @@ class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <div className={css.container}>
-        <h1 className={css.title}>Please leave feedback</h1>
+        <h1 className={css.title}>please leave feedback</h1>
         <input
           type="button"
           value="Good"

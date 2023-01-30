@@ -5,3 +5,6 @@
   border-color: rgb(182, 181, 181);
   background-color: #fff;
 }
+.button:hover {
+  background-color: rgb(121, 220, 220);
+}

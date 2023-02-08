@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import css from '../Section/Section.module.css';
 
 const Section = ({ title, children }) => {
-  console.log(children);
   return (
     <section className={css.container}>
       <h1 className={css.title}>{title}</h1>

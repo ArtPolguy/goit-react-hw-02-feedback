@@ -43,6 +43,8 @@ export class App extends Component {
             options={this.stateArrProps}
             onLeaveFeedback={this.handleBtnClick}
           />
+        </Section>
+        <Section title="Statistics">
           {this.countTotalFeedback() > 0 ? (
             <Statistics
               good={good}
